@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartMeet – Meeting Scheduler</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <h1>📅 SmartMeet</h1>
+  <p class="subtitle">Intelligent Meeting Scheduler</p>
+
+  <div class="card">
+    <h2>Add Meeting</h2>
+    
+    <label>Meeting Title</label>
+    <input type="text" id="meetingTitle" placeholder="e.g., Team Sync">
+
+    <label>Date</label>
+    <input type="date" id="meetingDate">
+
+    <div class="row">
+      <div>
+        <label>Start Time</label>
+        <input type="time" id="startTime">
+      </div>
+      <div>
+        <label>End Time</label>
+        <input type="time" id="endTime">
+      </div>
+    </div>
+
+    <label>Priority</label>
+    <select id="priority">
+      <option value="1">Low</option>
+      <option value="2" selected>Medium</option>
+      <option value="3">High</option>
+    </select>
+
+    <button onclick="addMeeting()">➕ Add Meeting</button>
+  </div>
+
+  <div class="card">
+    <h2>Working Hours</h2>
+    <div class="row">
+      <div>
+        <label>Start Hour</label>
+        <input type="time" id="workStart" value="09:00">
+      </div>
+      <div>
+        <label>End Hour</label>
+        <input type="time" id="workEnd" value="17:00">
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>📋 Meetings List</h2>
+    <div id="meetingsList">
+      <p class="empty-state">No meetings added yet</p>
+    </div>
+    <button class="danger-btn" onclick="clearMeetings()" style="display: none;" id="clearBtn">Clear All</button>
+  </div>
+
+  <button class="optimize-btn" onclick="optimizeSchedule()">🚀 Optimize Schedule</button>
+
+  <div class="output" id="output" style="display: none;">
+    <h3>🧠 Optimized Schedule</h3>
+    
+    <div id="conflictSection" style="display: none;">
+      <h4>⚠️ Conflicts Detected:</h4>
+      <ul id="conflictsList"></ul>
+    </div>
+
+    <div id="successSection" style="display: none;">
+      <h4>✅ No conflicts detected</h4>
+    </div>
+
+    <h4>📊 Optimized Meetings:</h4>
+    <div id="resultsList"></div>
+
+    <div class="summary">
+      <p><strong>📈 Total Meetings:</strong> <span id="totalMeetings">0</span></p>
+      <p><strong>⭐ Average AI Score:</strong> <span id="averageScore">0</span>/100</p>
+    </div>
+  </div>
+
+  <div class="loading" id="loading" style="display: none;">
+    ⏳ Optimizing your schedule...
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
